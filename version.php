@@ -18,7 +18,7 @@
  * Version package.
  *
  * @package   repository_ottflix
- * @copyright 2018 Eduardo Kraus  {@link http://ottflix.com.br}
+ * @copyright 2025 Eduardo Kraus {@link https://www.ottflix.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -26,10 +26,10 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->version = 2025012400;
 $plugin->requires = 2017050500;
-$plugin->release = '1.1.0';
+$plugin->release = '1.0.2';
 $plugin->component = 'repository_ottflix';
 $plugin->maturity = MATURITY_STABLE;
 
 $plugin->dependencies = [
-    "mod_supervideo" => 2025011600,
+    "mod_supervideo" => 2025012400,
 ];
