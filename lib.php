@@ -18,7 +18,7 @@
  * Lib class
  *
  * @package   repository_ottflix
- * @author    2025 Eduardo Kraus {@link https://www.eduardokraus.com}
+ * @copyright 2025 Eduardo Kraus {@link https://www.eduardokraus.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -82,17 +82,17 @@ class repository_ottflix extends repository {
             "path" => [],
         ];
 
-        $path_id = "";
+        $pathid = "";
         if ($path = optional_param("p", false, PARAM_RAW)) {
             $path = json_decode(base64_decode($path));
             if (isset($path->path_id)) {
-                $path_id = $path->path_id;
+                $pathid = $path->path_id;
             }
         }
 
         // Search files.
         $extensions = optional_param_array("accepted_types", [], PARAM_TEXT);
-        $files = \mod_supervideo\ottflix\repository::listing($page, 100, $path_id, $searchtext, $extensions);
+        $files = \mod_supervideo\ottflix\repository::listing($page, 100, $pathid, $searchtext, $extensions);
 
         foreach ($files->data->assets as $asset) {
             if ($asset->type == "path") {

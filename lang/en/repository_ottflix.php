@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['configplugin'] = 'OttFlix';
-$string['pluginname'] = 'OttFlix Repository';
 $string['ottflix:view'] = 'Use OttFlix in the File Picker';
+$string['pluginname'] = 'OttFlix Repository';
 $string['privacy:metadata'] = 'OttFlix does not store or transmit your data to third parties.';
 $string['search'] = 'Search Files in OttFlix';
