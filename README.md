@@ -35,6 +35,10 @@ With OttFlix, you can transform your videos and audios into interactive content,
   
 Liked the idea and want to test it? [Contact us](https://www.ottflix.com.br/en/Contato) to learn more!
 
+## Dependency
+
+This plugin requires the installation of [Super Video](https://moodle.org/plugins/mod_supervideo) to function properly.
+
 ## Support
 
 - For issues or suggestions, use the **Issues** section on GitHub.
