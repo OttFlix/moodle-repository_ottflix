@@ -26,8 +26,8 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->version = 2025012400;
 $plugin->requires = 2017050500;
-$plugin->release = '1.0.2';
-$plugin->component = 'repository_ottflix';
+$plugin->release = "1.0.2";
+$plugin->component = "repository_ottflix";
 $plugin->maturity = MATURITY_STABLE;
 
 $plugin->dependencies = [
