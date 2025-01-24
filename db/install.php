@@ -18,11 +18,9 @@
  * Installation file for the ottflix repository.
  *
  * @package   repository_ottflix
- * @copyright 2018 Eduardo Kraus  {@link http://ottflix.com.br}
+ * @copyright 2025 Eduardo Kraus {@link https://www.ottflix.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Repository ottflix install.

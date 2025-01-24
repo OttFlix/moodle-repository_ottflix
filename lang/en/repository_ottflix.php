@@ -18,14 +18,14 @@
  * Lang pt_br.
  *
  * @package   repository_ottflix
- * @copyright 2018 Eduardo Kraus  {@link http://ottflix.com.br}
+ * @copyright 2025 Eduardo Kraus {@link https://www.ottflix.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['configplugin'] = 'OttFlix Videos';
-$string['pluginname'] = 'OttFlix Video Repository';
-$string['search'] = 'Search videos';
+$string['configplugin'] = 'OttFlix';
+$string['pluginname'] = 'OttFlix Repository';
 $string['ottflix:view'] = 'Use OttFlix in the File Picker';
 $string['privacy:metadata'] = 'OttFlix does not store or transmit your data to third parties.';
+$string['search'] = 'Search Files in OttFlix';

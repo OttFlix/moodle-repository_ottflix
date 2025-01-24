@@ -18,24 +18,17 @@
  * Privacy Subsystem implementation for repository_ottflix.
  *
  * @package   repository_ottflix
- * @copyright 2018 Eduardo Kraus  {@link http://ottflix.com.br}
+ * @copyright 2025 Eduardo Kraus {@link https://www.ottflix.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace repository_ottflix\privacy;
 
-use core_privacy\local\metadata\collection;
-use core_privacy\local\request\approved_contextlist;
-use core_privacy\local\request\context;
-use core_privacy\local\request\contextlist;
-
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Privacy plugin providers.
  *
  * @package   repository_ottflix
- * @copyright 2018 Eduardo Kraus  {@link http://ottflix.com.br}
+ * @copyright 2025 Eduardo Kraus {@link https://www.ottflix.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements \core_privacy\local\metadata\null_provider {
@@ -43,10 +36,9 @@ class provider implements \core_privacy\local\metadata\null_provider {
     /**
      * Get reason.
      *
-     * @return  string
+     * @return string
      */
-    public static function get_reason() : string {
-        return 'privacy:metadata';
+    public static function get_reason(): string {
+        return "privacy:metadata";
     }
-
 }
