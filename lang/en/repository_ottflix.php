@@ -24,17 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-
-$string['configplugin'] = 'Vídeos do OTTFlix';
-$string['pluginname'] = 'Repositório de vídeos do OTTFlix ';
-$string['search'] = 'Buscar vídeos';
-$string['ottflix:view'] = 'Use o OTTFlix no Seletor de Arquivos';
-$string['privacy:metadata'] = 'A Vídeoteca se integrada com o <a href="https://www.ottflix.com.br/br/LiveSparrow">Live Sparrow</a> guardará dados para detecção de pirataria.';
-
-$string['token_title'] = 'Token do OTTFlix';
-$string['token_desc'] = 'Token para API poder se comunicar com o OTTFlix!';
-
-$string['safety_title'] = 'Segurança';
-$string['safety_desc'] = 'Sobre o Player mostrar?';
-$string['safety_none'] = 'Nada';
-$string['safety_id'] = 'ID do Aluno';
+$string['configplugin'] = 'OttFlix Videos';
+$string['pluginname'] = 'OttFlix Video Repository';
+$string['search'] = 'Search videos';
+$string['ottflix:view'] = 'Use OttFlix in the File Picker';
+$string['privacy:metadata'] = 'OttFlix does not store or transmit your data to third parties.';

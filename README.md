@@ -1,18 +1,51 @@
-# Plugin repository OTTFlix
+# Plugin Repository OttFlix
 
-[![Build Status](https://travis-ci.org/ottflix/moodle-repository_ottflix.svg?branch=master)](https://travis-ci.org/ottflix/moodle-repository_ottflix)
+OttFlix is an innovative solution that not only stores videos and audios but also converts these contents into interactive H5P formats, providing a richer and more engaging learning experience.
 
-A Ottflix é uma solução de CMS (Content Management System) para publicação e organização de vídeos de forma segura. Possui recursos avançados para armazenamento, controle e entrega de conteúdo audiovisual.
+## H5P
 
-Você poderá integrar ao seu LMS (Learning Management System) e fornecer aos seus alunos uma experiência única e segura.
+With OttFlix, you can transform your videos and audios into interactive content, such as quizzes, presentations, and much more, all in an intuitive and easy-to-use environment. Here are some of the interactive content options available:
 
-## A listagem de vídeos
-A Ottflix é totalmente organizada por um sistema de pastas customizáveis que auxilia na organização e sistematização do conteúdo do usuário.
+- **[Interactive Book](https://h5p.org/content-types/interactive-book)**  
+  Create an interactive book with various content such as videos, glossaries, quizzes, drag-and-drop activities, crossword puzzles, and more. Add a summary at the end, showing the student’s score.  
+  
+- **[Interactive Video](https://h5p.org/interactive-video)**  
+  Create interactive videos with chapters, glossaries, and summaries to reinforce learning.  
+  
+- **[Digital Book](https://h5p.org/advancedText)**  
+  Organize content into chapters in an engaging way to create a cohesive and interactive digital book.  
+  
+- **[Glossary/FAQ](https://h5p.org/accordion)**  
+  Create interactive glossaries or FAQs to make learning easier without overwhelming students with long texts.  
+  
+- **[Flashcards](https://h5p.org/dialog-cards)**  
+  Create interactive flashcards to help memorize words, phrases, or key concepts.  
+  
+- **[Quizzes](https://h5p.org/question-set)**  
+  Create interactive quizzes with various question types, such as multiple choice and true/false.  
+  
+- **[Drag the Words Game](https://h5p.org/drag-the-words)**  
+  Create a game where students drag the missing words to the correct location, reinforcing the content learned.  
+  
+- **[Crossword](https://h5p.org/content-types/crossword)**  
+  Create an interactive crossword game to engage students and reinforce the content.  
+  
+- **[Word Search Game](https://h5p.org/content-types/crossword)**  
+  Create a game where students find and select words in a grid based on a given list.  
+  
+Liked the idea and want to test it? [Contact us](https://www.ottflix.com.br/en/Contato) to learn more!
 
-##  Qualidade de reprodução
-A Ottflix possui suporte nativo a Dynamic Stream. Isso permite que seus vídeos funcionem igual ao Youtube, detectando a banda do usuário e selecionando automaticamente a melhor qualidade de acordo com a internet do usuário.
+## Support
 
-## E a segurança?
-O acesso aos vídeos é por Token HMAC que traz uma segurança elevada. Através dele é gerado um HASH HMAC que é praticamente impossível decifrar.
+- For issues or suggestions, use the **Issues** section on GitHub.
 
-Gostou e quer testar? [Entre em contato](https://www.ottflix.com.br/br/Contato)
+## License
+
+This project is licensed under **GPL v3**.
+
+## Contact
+
+If you have any questions or want to learn more about the OttFlix solution, contact us:
+
+- **Email:** [ottflix@eduardokraus.com.br](mailto:ottflix@eduardokraus.com.br)
+- **Website:** [ottflix.com.br/en](https://www.ottflix.com.br/en)
