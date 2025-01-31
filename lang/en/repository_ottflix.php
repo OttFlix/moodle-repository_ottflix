@@ -25,6 +25,15 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['configplugin'] = 'OttFlix';
+$string['h5p-accordion-title'] = 'Glossary/FAQ';
+$string['h5p-advancedtext-title'] = 'Digital Book';
+$string['h5p-crossword-title'] = 'Crossword Puzzle';
+$string['h5p-dialogcards-title'] = 'Flashcards';
+$string['h5p-dragtext-title'] = 'Drag the Words Game';
+$string['h5p-findthewords-title'] = 'Word Search Game';
+$string['h5p-interactivebook-title'] = 'Interactive Book';
+$string['h5p-interactivevideo-title'] = 'Interactive Video';
+$string['h5p-questionset-title'] = 'Quizzes';
 $string['ottflix:view'] = 'Use OttFlix in the File Picker';
 $string['pluginname'] = 'OttFlix Repository';
 $string['privacy:metadata'] = 'OttFlix does not store or transmit your data to third parties.';
