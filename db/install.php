@@ -26,7 +26,31 @@
  * Repository ottflix install.
  *
  * @return bool Return true.
+ *
+ * @throws dml_exception
  */
 function xmldb_repository_ottflix_install() {
+    global $DB;
+
+    $repository = (object)[
+        "type" => "ottflix",
+        "visible" => 1,
+        "sortorder" => 2,
+    ];
+    $repository->id = $DB->insert_record("repository", $repository);
+
+    $repositoryinstances = (object)[
+        "name" => "",
+        "typeid" => $repository->id,
+        "userid" => 0,
+        "contextid" => 1,
+        "username" => null,
+        "password" => null,
+        "timecreated" => time(),
+        "timemodified" => time(),
+        "readonly" => 0,
+    ];
+    $repositoryinstances->id = $DB->insert_record("repository_instances", $repositoryinstances);
+
     return true;
 }
