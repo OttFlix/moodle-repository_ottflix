@@ -144,7 +144,7 @@ class repository_ottflix extends repository {
             $ret["path"] = array_reverse($ret["path"]);
 
             $extension = "";
-            if($acceptedtypes[0] == ".ottflix"){
+            if ($acceptedtypes[0] == ".ottflix") {
                 $extension = ".ottflix";
             }
 
@@ -183,8 +183,7 @@ class repository_ottflix extends repository {
                             "datecreated" => null,
                             "datemodified" => null,
                         ];
-                    }
-                    else if ($generatescorm) {
+                    } else if ($generatescorm) {
                         $ret["list"][] = [
                             "path" => base64_encode(json_encode([
                                 "contextid" => $this->context->id,
@@ -203,8 +202,7 @@ class repository_ottflix extends repository {
                             "datecreated" => null,
                             "datemodified" => null,
                         ];
-                    }
-                    else {
+                    } else {
                         $ret["list"][] = [
                             "shorttitle" => "{$asset->title}{$extension}",
                             "title" => "{$asset->filename}.{$asset->extension}",
