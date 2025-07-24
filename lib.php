@@ -114,16 +114,20 @@ class repository_ottflix extends repository {
         } else {
             // Search files.
             $generateh5p = $generatescorm = false;
-            $extensions = optional_param_array("accepted_types", [], PARAM_TEXT);
-            if ($extensions[0] == ".h5p") {
+            $acceptedtypes = optional_param_array("accepted_types", [], PARAM_TEXT);
+            if ($acceptedtypes[0] == ".ottflix") {
                 $generateh5p = true;
-                $extensions = ["Video", "Audio"];
+                $acceptedtypes = ["Video", "Audio"];
             }
-            if ($extensions[0] == ".zip" || $extensions[0] == ".imscc") {
+            if ($acceptedtypes[0] == ".h5p") {
+                $generateh5p = true;
+                $acceptedtypes = ["Video", "Audio"];
+            }
+            if ($acceptedtypes[0] == ".zip" || $acceptedtypes[0] == ".imscc") {
                 $generatescorm = true;
-                $extensions = ["Video", "Audio"];
+                $acceptedtypes = ["Video", "Audio"];
             }
-            $files = \mod_supervideo\ottflix\repository::listing($page, 100, $pathid, $searchtext, $extensions);
+            $files = \mod_supervideo\ottflix\repository::listing($page, 100, $pathid, $searchtext, $acceptedtypes);
 
             foreach ($files->data->path as $path) {
                 $fileinfo = [
@@ -139,6 +143,11 @@ class repository_ottflix extends repository {
             }
             $ret["path"] = array_reverse($ret["path"]);
 
+            $extension = "";
+            if($acceptedtypes[0] == ".ottflix"){
+                $extension = ".ottflix";
+            }
+
             foreach ($files->data->assets as $asset) {
                 if ($asset->type == "path") {
                     $ret["list"][] = [
@@ -148,8 +157,8 @@ class repository_ottflix extends repository {
                         ])),
                         "icon" => $asset->thumb,
                         "thumbnail" => $asset->thumb,
-                        "thumbnail_title" => $asset->title,
-                        "title" => $asset->title,
+                        "thumbnail_title" => "{$asset->title}{$extension}",
+                        "title" => "{$asset->title}{$extension}",
                         "children" => [],
                         "datecreated" => null,
                         "datemodified" => null,
@@ -174,7 +183,8 @@ class repository_ottflix extends repository {
                             "datecreated" => null,
                             "datemodified" => null,
                         ];
-                    } else if ($generatescorm) {
+                    }
+                    else if ($generatescorm) {
                         $ret["list"][] = [
                             "path" => base64_encode(json_encode([
                                 "contextid" => $this->context->id,
@@ -193,11 +203,12 @@ class repository_ottflix extends repository {
                             "datecreated" => null,
                             "datemodified" => null,
                         ];
-                    } else {
+                    }
+                    else {
                         $ret["list"][] = [
-                            "shorttitle" => $asset->title,
+                            "shorttitle" => "{$asset->title}{$extension}",
                             "title" => "{$asset->filename}.{$asset->extension}",
-                            "thumbnail_title" => $asset->title,
+                            "thumbnail_title" => "{$asset->title}{$extension}",
                             "thumbnail" => $asset->thumb,
                             "icon" => $asset->thumb,
                             "source" => $asset->url,
@@ -332,8 +343,13 @@ class repository_ottflix extends repository {
      * @return array
      */
     public function supported_filetypes() {
+        $mimetypes = get_mimetypes_array();
+        if (!isset($mimetypes["ottflix"])) {
+            core_filetypes::add_type("ottflix", "video/ottflix", "video");
+        }
         return [
             "video", "audio",      // Video and audios.
+            "video/ottflix",       // Ottflix Video.
             "document",            // PDF´s and doc files.
             "image",               // Images.
             "application/zip.h5p", // H5p´s.
