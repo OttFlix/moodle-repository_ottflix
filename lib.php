@@ -365,4 +365,15 @@ class repository_ottflix extends repository {
     public function supported_returntypes() {
         return FILE_INTERNAL | FILE_REFERENCE;
     }
+
+    /**
+     * is_enable
+     *
+     * @return bool
+     * @throws Exception
+     */
+    public function is_enable() {
+        $config = get_config('supervideo');
+        return isset($config->ottflix_url[10]) && isset($config->ottflix_token[10]);
+    }
 }
