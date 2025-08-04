@@ -26,7 +26,6 @@
  * Repository ottflix install.
  *
  * @return bool Return true.
- *
  * @throws dml_exception
  */
 function xmldb_repository_ottflix_install() {
