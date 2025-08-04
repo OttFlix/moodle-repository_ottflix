@@ -318,7 +318,7 @@ class repository_ottflix extends repository {
     }
 
     /**
-     * Youtube plugin doesn't support global search
+     * OttFlix plugin doesn't support global search
      */
     public function global_search() {
         return false;
