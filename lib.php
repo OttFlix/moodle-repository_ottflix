@@ -22,6 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+use mod_supervideo\ottflix\repository as repositoryOttflix;
+
 defined('MOODLE_INTERNAL') || die();
 
 require_once("{$CFG->dirroot}/repository/lib.php");
@@ -34,17 +36,13 @@ require_once("{$CFG->dirroot}/repository/lib.php");
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class repository_ottflix extends repository {
-
     /**
      * Get file listing.
      *
      * @param string $encodedpath
      * @param string $page
-     *
      * @return array
-     *
-     * @throws coding_exception
-     * @throws dml_exception
+     * @throws Exception
      */
     public function get_listing($encodedpath = "", $page = "") {
         return $this->search("", 0);
@@ -55,11 +53,8 @@ class repository_ottflix extends repository {
      *
      * @param string $searchtext
      * @param int $page
-     *
      * @return array|mixed
-     *
-     * @throws coding_exception
-     * @throws dml_exception
+     * @throws Exception
      */
     public function search($searchtext, $page = 0) {
         global $SESSION;
@@ -72,13 +67,14 @@ class repository_ottflix extends repository {
 
         $SESSION->{$sessionkeyword} = $searchtext;
 
+        $ottflixurl = get_config("supervideo", "ottflix_url");
         $ret = [
             "dynload" => true,
             "nologin" => true,
             "page" => (int)$page,
             "norefresh" => false,
             "nosearch" => false,
-            "manage" => "https://app.ottflix.com.br/",
+            "manage" => $ottflixurl,
             "list" => [],
             "path" => [],
         ];
@@ -127,7 +123,7 @@ class repository_ottflix extends repository {
                 $generatescorm = true;
                 $acceptedtypes = ["Video", "Audio"];
             }
-            $files = \mod_supervideo\ottflix\repository::listing($page, 100, $pathid, $searchtext, $acceptedtypes);
+            $files = repositoryOttflix::listing($page, 100, $pathid, $searchtext, $acceptedtypes);
 
             foreach ($files->data->path as $path) {
                 $fileinfo = [
@@ -229,9 +225,8 @@ class repository_ottflix extends repository {
      *
      * @param object $path
      * @param string $extension
-     *
      * @return array
-     * @throws coding_exception
+     * @throws Exception
      */
     private function h5p_itens($path, $extension) {
         global $OUTPUT;
@@ -273,7 +268,6 @@ class repository_ottflix extends repository {
      *
      * @param string $source
      * @param string $filename
-     *
      * @return array
      * @throws Exception
      */
@@ -325,17 +319,6 @@ class repository_ottflix extends repository {
     }
 
     /**
-     * get type option name function
-     *
-     * This function is for module settings.
-     *
-     * @return array
-     */
-    public static function get_type_option_names() {
-        return array_merge(parent::get_type_option_names(), ["key"]);
-    }
-
-    /**
      * file types supported by ottflix plugin
      *
      * @return array
@@ -346,7 +329,8 @@ class repository_ottflix extends repository {
             core_filetypes::add_type("ottflix", "video/ottflix", "video");
         }
         return [
-            "video", "audio",      // Video and audios.
+            "video",
+            "audio",      // Video and audios.
             "video/ottflix",       // Ottflix Video.
             "document",            // PDF´s and doc files.
             "image",               // Images.
@@ -371,7 +355,75 @@ class repository_ottflix extends repository {
      * @throws Exception
      */
     public function is_enable() {
-        $config = get_config('supervideo');
-        return isset($config->ottflix_url[10]) && isset($config->ottflix_token[10]);
+        return true;
+    }
+
+    /**
+     * To check whether the user is logged in.
+     *
+     * @return bool
+     * @throws Exception
+     */
+    public function check_login() {
+        $token = get_config("", "ottflix_token");
+        return isset($token[20]);
+    }
+
+    /**
+     * Show the login screen, if required
+     *
+     * @return Array|void
+     * @throws Exception
+     */
+    public function print_login() {
+        $authurl = new moodle_url("/admin/repository.php", ["action" => "edit", "repos" => "ottflix"]);
+        if ($this->options["ajax"]) {
+            return [
+                "login" => [
+                    (object)[
+                        "type" => "popup",
+                        "url" => $authurl->out(false),
+                    ],
+                ],
+            ];
+        } else {
+            $strtoken = get_string("ottflix_token", "mod_supervideo");
+            $strlogin = get_string("ottflix_token_desc", "mod_supervideo");
+            echo "<p>{$strtoken}</p>\n<p><a target='_blank' href='{$authurl->out()}'>{$strlogin}</a></p>";
+        }
+    }
+
+    /**
+     * get type option name function
+     *
+     * This function is for module settings.
+     *
+     * @return array
+     */
+    public static function get_type_option_names() {
+        return array_merge(parent::get_type_option_names(), ["key"]);
+    }
+
+    /**
+     * type_config_form
+     *
+     * @param MoodleQuickForm $mform
+     * @param string $classname
+     * @return void
+     * @throws Exception
+     */
+    public static function type_config_form($mform, $classname = "repository") {
+        parent::type_config_form($mform, $classname);
+        $token = get_config("mod_supervideo", "ottflix_token");
+        if (empty($token)) {
+            $token = "HMAC-SHA2048-xxxxxxxx";
+        }
+
+        $title = get_string("ottflix_token", "mod_supervideo");
+        $mform->addElement("text", "ottflix_token", $title, ["size" => "90"]);
+        $mform->setType("ottflix_token", PARAM_TEXT);
+        $mform->setDefault("ottflix_token", $token);
+
+        $mform->addElement("static", "ottflixtokendesk", "", get_string("ottflix_token", "mod_supervideo"));
     }
 }
