@@ -85,7 +85,7 @@ jobs:
 
     - name: Moodle Code Checker
       if: ${{ !cancelled() }}
-      run: moodle-plugin-ci phpcs --max-warnings 0 --exclude=Universal.WhiteSpace.CommaSpacing,PSR12.Classes.ClassInstantiation.MissingParentheses
+      run: moodle-plugin-ci phpcs --max-warnings 0 --exclude="Universal.WhiteSpace.CommaSpacing,PSR12.Classes.ClassInstantiation"
 
     - name: Moodle Code Checker HELP
       if: ${{ !cancelled() }}
