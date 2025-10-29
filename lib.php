@@ -330,7 +330,7 @@ class repository_ottflix extends repository {
         }
         return [
             "video",
-            "audio",      // Video and audios.
+            "audio",               // Video and audios.
             "video/ottflix",       // Ottflix Video.
             "document",            // PDF´s and doc files.
             "image",               // Images.
