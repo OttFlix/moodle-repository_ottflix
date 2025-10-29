@@ -30,7 +30,7 @@ jobs:
 
       - name: Encerrar se não houver versão
         if: steps.ver.outputs.version == ''
-        run:
+        run: |
            echo "Ignorando: commit não é um release."
 
       - name: Criar tag anotada
