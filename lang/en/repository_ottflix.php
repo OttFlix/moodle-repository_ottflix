@@ -25,6 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['configplugin'] = 'OttFlix';
+$string['errorwhiledownload'] = 'Error while downloading the file from OttFlix: {$a}';
 $string['h5p-accordion-title'] = 'Glossary/FAQ';
 $string['h5p-advancedtext-title'] = 'Digital Book';
 $string['h5p-crossword-title'] = 'Crossword Puzzle';
